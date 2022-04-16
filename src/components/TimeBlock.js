@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import CategoryCard from './CategoryCard';
@@ -15,7 +15,10 @@ function TimeBlock(props) {
     "Money", 
     "Career", 
     "Misc"
-  ]
+  ];
+
+  //STATES
+  const [cardTitle, setCardTitle] = useState(props.timeCat.replace(/s/g,''));
 
   //DISPATCH
   const dispatch = useDispatch();
@@ -75,9 +78,28 @@ function TimeBlock(props) {
     return allItems
   }
 
+  const changeTitle = (event) => {
+    setCardTitle(event.target.value);
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  const checkIfEnterPressed = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      event.target.blur();
+    }
+  };
+
+  //RETURN
   return (
     <div className="TimeBlock">
-        <h1>{props.timeCat.replace(/s/g,'')}</h1>
+
+        {/* <form onSubmit={handleSubmit}> */}
+          <input type="text" value={cardTitle} onChange={changeTitle} onKeyDown={(event) => checkIfEnterPressed(event)}></input>
+        {/* </form> */}
         {displayCategoryCards()}
         {displayAddCategoryCardButtons(categoryOptions)}
     </div> 
