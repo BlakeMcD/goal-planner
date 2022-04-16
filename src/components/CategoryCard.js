@@ -25,15 +25,10 @@ function CategoryCard(props) {
             <CardItem key={i} catUuid={props.uuid} uuid={catItems[i].uuid}/>
         );
       }
-      console.log("allItems:", allItems);
       return allItems
     };
 
     const addCategoryItem = () => {
-      console.log("add Cat Item Code Ran")
-      console.log("categoryCard props:", props)
-
-
         dispatch(addItem({
             catUuid: props.uuid, 
             uuid: uuidv4(),
@@ -46,7 +41,7 @@ function CategoryCard(props) {
         {/* <p>This is a category card</p>
         <p>yearUuid: {props.yearUuid}</p>
         <p>selfUuid: {props.uuid}</p> */}
-        <h3>CATEGORY CARD</h3>
+        <h3>{props.category}</h3>
         {displayItems()}
         <button onClick={() => addCategoryItem()}>Add Category Item</button>
     </div>

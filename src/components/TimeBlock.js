@@ -70,14 +70,14 @@ function TimeBlock(props) {
     let allItems = [];
     for (let i = 0; i < catOptions.length; i++) {
       allItems.push(
-        <button onClick={() => addCategoryCard(catOptions[i])}>Add Category Card {catOptions[i]}</button>
+        <button key={i} onClick={() => addCategoryCard(catOptions[i])}>Add Category Card {catOptions[i]}</button>
       )}
     return allItems
   }
 
   return (
     <div className="TimeBlock">
-        <h1>Time Block</h1>
+        <h1>{props.timeCat.replace(/s/g,'')}</h1>
         {displayCategoryCards()}
         {displayAddCategoryCardButtons(categoryOptions)}
     </div> 
