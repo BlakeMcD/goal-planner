@@ -17,10 +17,12 @@ function CardItem() {
         }
     };
 
+    const handleFocus = (event) => event.target.select();
+
     //RETURN
     return (
         <div>
-            <input value={itemText} onChange={changeText} onKeyDown={(event) => checkIfEnterPressed(event)}></input>
+            <input value={itemText} onChange={changeText} onFocus={handleFocus} onKeyDown={(event) => checkIfEnterPressed(event)}></input>
         </div>
     )
 }

@@ -6,10 +6,24 @@ export const addYear = (payload) => {
     };
 };
 
+export const editYearTitle = (payload) => {
+    return {
+        type: "EDIT_YEAR_TITLE", 
+        item: payload
+    };
+};
+
 //MONTH
 export const addMonth = (payload) => {
     return {
         type: "ADD_MONTH", 
+        item: payload
+    };
+};
+
+export const editMonthTitle = (payload) => {
+    return {
+        type: "EDIT_MONTH_TITLE", 
         item: payload
     };
 };
@@ -22,6 +36,13 @@ export const addWeek = (payload) => {
     };
 };
 
+export const editWeekTitle = (payload) => {
+    return {
+        type: "EDIT_WEEK_TITLE", 
+        item: payload
+    };
+};
+
 //DAY
 export const addDay = (payload) => {
     return {
@@ -29,6 +50,14 @@ export const addDay = (payload) => {
         item: payload
     };
 };
+
+export const editDayTitle = (payload) => {
+    return {
+        type: "EDIT_DAY_TITLE", 
+        item: payload
+    };
+};
+
 
 //CATEGORIES
 export const addCategory = (payload) => {
@@ -38,7 +67,7 @@ export const addCategory = (payload) => {
     };
 };
 
-//CATEGORIES
+//ITEMS
 export const addItem = (payload) => {
     return {
         type: "ADD_ITEM", 

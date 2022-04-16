@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import CategoryCard from './CategoryCard';
-import { addCategory } from '../actions/actionCreator';
+import { addCategory, editYearTitle, editMonthTitle, editWeekTitle, editDayTitle } from '../actions/actionCreator';
 
 function TimeBlock(props) {
 
@@ -27,6 +27,46 @@ function TimeBlock(props) {
   const catBlocks = useSelector((state) => {
     return state.categories;
   })
+
+  //USEEFFECT
+  useEffect(() => {
+    console.log("props passed to useEffect:", props)
+
+    switch (props.timeCat) {
+      case "years":
+        dispatch(editYearTitle({
+          timeUuid: props.timeUuid,
+          text: cardTitle
+        }));
+        break;
+
+      case "months":
+        dispatch(editMonthTitle({
+          timeUuid: props.timeUuid,
+          text: cardTitle
+        }));
+        break;
+
+      case "weeks":
+        dispatch(editWeekTitle({
+          timeUuid: props.timeUuid,
+          text: cardTitle
+        }));
+        break;
+      
+      case "days":
+      dispatch(editDayTitle({
+        timeUuid: props.timeUuid,
+        text: cardTitle
+      }));
+        break;
+
+      default:
+        console.log("unrecognized props passed to useEffect")
+    }
+
+    
+}, [cardTitle])
 
   //FUNCTIONS
   const displayCategoryCards = () => {
@@ -56,8 +96,6 @@ function TimeBlock(props) {
     //if this category already exists in this time block, don't run the dispatch
     const existingCategory = timeBlockCatCards.find((catCard) => catCard.category === catType);
     if (existingCategory !== undefined) {
-      console.log("There IS already this category in the timeblock");
-      alert("You've already added this category")
       return null;
     }
 
@@ -86,6 +124,8 @@ function TimeBlock(props) {
     event.preventDefault();
   };
 
+  const handleFocus = (event) => event.target.select();
+
   const checkIfEnterPressed = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -98,7 +138,7 @@ function TimeBlock(props) {
     <div className="TimeBlock">
 
         {/* <form onSubmit={handleSubmit}> */}
-          <input type="text" value={cardTitle} onChange={changeTitle} onKeyDown={(event) => checkIfEnterPressed(event)}></input>
+          <input type="text" value={cardTitle} onChange={changeTitle} onFocus={handleFocus} onKeyDown={(event) => checkIfEnterPressed(event)}></input>
         {/* </form> */}
         {displayCategoryCards()}
         {displayAddCategoryCardButtons(categoryOptions)}
