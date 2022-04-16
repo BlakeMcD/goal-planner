@@ -16,7 +16,7 @@
 
 .TimeContainer {
   display: flex;
-  flex: 4;
+  flex: 9;
 }
 
 .TimeContainer--year, .TimeContainer--month, .TimeContainer--week, .TimeContainer--day {

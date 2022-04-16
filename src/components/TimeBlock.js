@@ -6,13 +6,16 @@ import { addCategory } from '../actions/actionCreator';
 
 function TimeBlock(props) {
 
-  //STATE
-//   const [counter, setCounter] = useState(0)
-
-//   //USE EFFECT
-//   useEffect(() => {    // Update the document title using the browser API    
-//     console.log("TimeBlock Mounted")  
-//   });
+  //CONSTANTS AND VARIABLES
+  const categoryOptions = [
+    "Body", 
+    "Mind", 
+    "Family",
+    "Relationships", 
+    "Money", 
+    "Career", 
+    "Misc"
+  ]
 
   //DISPATCH
   const dispatch = useDispatch();
@@ -24,9 +27,7 @@ function TimeBlock(props) {
 
   //FUNCTIONS
   const displayCategoryCards = () => {
-
     let allItems = [];
-
     for (let i = 0; i < catBlocks.length; i++) {
 
       if (catBlocks[i].timeUuid === props.timeUuid)
@@ -34,26 +35,51 @@ function TimeBlock(props) {
           <CategoryCard key={i} timeCat={catBlocks[i].timeCat} uuid={catBlocks[i].uuid} timeUuid={catBlocks[i].timeUuid} category={catBlocks[i].category} />
       );
     }
-    console.log("allItems:", allItems);
     return allItems
   };
 
-  const addCategoryCard = () => {
-    console.log("addCategoryCard function it TimeBlock ran")
+  const addCategoryCard = (catType) => {
+    //only add CategoryCard IF this category item doesn't already exist in this store's timeblock
+
+    //return all items belong to this timeUuid
+    let timeBlockCatCards = [];
+    for (let i = 0; i < catBlocks.length; i++) {
+      if (catBlocks[i].timeUuid === props.timeUuid)
+        timeBlockCatCards.push(
+          catBlocks[i]
+      );
+    };
+
+    //if this category already exists in this time block, don't run the dispatch
+    const existingCategory = timeBlockCatCards.find((catCard) => catCard.category === catType);
+    if (existingCategory !== undefined) {
+      console.log("There IS already this category in the timeblock");
+      alert("You've already added this category")
+      return null;
+    }
+
     dispatch(addCategory({
       timeCat: props.timeCat, 
       timeUuid: props.timeUuid,
       uuid: uuidv4(),
-      category: "test category"
+      category: catType
     }))
+  }
+
+  const displayAddCategoryCardButtons = (catOptions) => {
+    let allItems = [];
+    for (let i = 0; i < catOptions.length; i++) {
+      allItems.push(
+        <button onClick={() => addCategoryCard(catOptions[i])}>Add Category Card {catOptions[i]}</button>
+      )}
+    return allItems
   }
 
   return (
     <div className="TimeBlock">
         <h1>Time Block</h1>
-        {/* <p>And my uuid is: {props.yearUuid}</p> */}
         {displayCategoryCards()}
-        <button onClick={() => addCategoryCard()}>Add Category Card</button>
+        {displayAddCategoryCardButtons(categoryOptions)}
     </div> 
   )
 }

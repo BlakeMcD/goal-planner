@@ -32,6 +32,8 @@ function CategoryCard(props) {
     const addCategoryItem = () => {
       console.log("add Cat Item Code Ran")
       console.log("categoryCard props:", props)
+
+
         dispatch(addItem({
             catUuid: props.uuid, 
             uuid: uuidv4(),
