@@ -1,9 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { editItemTitle } from '../actions/actionCreator';
 
-function CardItem() {
+function CardItem(props) {
+
+    console.log("CardItem props: ", props)
 
     //STATES
-    const [itemText, setItemText] = useState("type hereeeee")
+    const [itemText, setItemText] = useState("type here");
+
+    //DISPATCH
+    const dispatch = useDispatch();
+
+    //USEEFFECT
+    useEffect(() => {
+        console.log("props passed to CardItem useEffect:", props)
+
+        dispatch(editItemTitle({
+            timeUuid: props.uuid,
+            text: itemText
+        }));
+       
+    }, [itemText])
 
     //FUNCTIONS
     const changeText = (event) => {

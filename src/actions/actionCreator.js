@@ -74,3 +74,10 @@ export const addItem = (payload) => {
         item: payload
     };
 };
+
+export const editItemTitle = (payload) => {
+    return {
+        type: "EDIT_ITEM_TITLE", 
+        item: payload
+    };
+};
