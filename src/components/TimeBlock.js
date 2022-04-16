@@ -18,29 +18,25 @@ function TimeBlock(props) {
   const dispatch = useDispatch();
 
   //SELECTOR
-//   const yearBlock = useSelector((state) => {
-//     if (state.years !== undefined) {
-//       const year = state.years.find((year) => year.uuid === props.yearUuid)
-//       if (year !== undefined) {
-//         return year;
-//       }
-//       return [];
-//     } 
-//     return [];
-//   })
+  const catBlocks = useSelector((state) => {
+    return state.categories;
+  })
 
   //FUNCTIONS
-//   const displayCategoryCards = () => {
-//     let allItems = [];
-//     if (yearBlock.categories.length !== 0) {
-//       for (let i = 0; i < yearBlock.categories.length; i++) {
-//         allItems.push(
-//           <CategoryCard key={i} uuid={yearBlock.categories[i].uuid} yearUuid={yearBlock.uuid} category={yearBlock.categories[i].category} />
-//         )
-//       }
-//     };
-//     return allItems
-//   };
+  const displayCategoryCards = () => {
+
+    let allItems = [];
+
+    for (let i = 0; i < catBlocks.length; i++) {
+
+      if (catBlocks[i].timeUuid === props.timeUuid)
+        allItems.push(
+          <CategoryCard key={i} timeCat={catBlocks[i].timeCat} uuid={catBlocks[i].uuid} timeUuid={catBlocks[i].timeUuid} category={catBlocks[i].category} />
+      );
+    }
+    console.log("allItems:", allItems);
+    return allItems
+  };
 
   const addCategoryCard = () => {
     console.log("addCategoryCard function it TimeBlock ran")
@@ -48,7 +44,7 @@ function TimeBlock(props) {
       timeCat: props.timeCat, 
       timeUuid: props.timeUuid,
       uuid: uuidv4(),
-      title: "test title"
+      category: "test category"
     }))
   }
 
@@ -56,8 +52,7 @@ function TimeBlock(props) {
     <div className="TimeBlock">
         <h1>Time Block</h1>
         {/* <p>And my uuid is: {props.yearUuid}</p> */}
-        <CategoryCard/>
-        {/* {displayCategoryCards()} */}
+        {displayCategoryCards()}
         <button onClick={() => addCategoryCard()}>Add Category Card</button>
     </div> 
   )

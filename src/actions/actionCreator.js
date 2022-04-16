@@ -37,3 +37,11 @@ export const addCategory = (payload) => {
         item: payload
     };
 };
+
+//CATEGORIES
+export const addItem = (payload) => {
+    return {
+        type: "ADD_ITEM", 
+        item: payload
+    };
+};

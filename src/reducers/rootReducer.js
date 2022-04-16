@@ -4,6 +4,7 @@ import monthReducer from "./monthReducer";
 import weekReducer from "./weekReducer";
 import dayReducer from "./dayReducer";
 import categoryReducer from "./categoryReducer";
+import itemReducer from "./itemReducer";
 
 const rootReducer = combineReducers({
     years: yearReducer, 
@@ -11,6 +12,7 @@ const rootReducer = combineReducers({
     weeks: weekReducer, 
     days: dayReducer, 
     categories: categoryReducer,
+    items: itemReducer
 });
 
 export default rootReducer

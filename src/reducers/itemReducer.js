@@ -1,7 +1,7 @@
-const categoryReducer = (state = [], action) => {
+const itemReducer = (state = [], action) => {
     switch(action.type) {
 
-        case 'ADD_CATEGORY':
+        case 'ADD_ITEM':
             return [...state, action.item];
             
         default: 
@@ -9,4 +9,4 @@ const categoryReducer = (state = [], action) => {
     }
 };
 
-export default categoryReducer;
+export default itemReducer;
