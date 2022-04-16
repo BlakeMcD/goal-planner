@@ -9,7 +9,7 @@ export const addYear = (payload) => {
 //MONTH
 export const addMonth = (payload) => {
     return {
-        type: "ADD_Month", 
+        type: "ADD_MONTH", 
         item: payload
     };
 };
