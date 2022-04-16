@@ -80,11 +80,12 @@ function App() {
     }
   }
 
-  const displayTimeBlocks = (timeBlock) => {
+  const displayTimeBlocks = (timeBlock, timeCategory) => {
+
     let allItems = [];
     for (let i = 0; i < timeBlock.length; i++) {
       allItems.push(
-        <TimeBlock key={i} yearUuid={timeBlock[i].uuid}/>
+        <TimeBlock key={i} timeCat={timeCategory} timeUuid={timeBlock[i].uuid}/>
       )
     }
     return allItems;
@@ -100,19 +101,19 @@ function App() {
         </div>
         <div className="TimeContainer">
           <div className="TimeContainer--year">
-            {displayTimeBlocks(yearBlocks)}
+            {displayTimeBlocks(yearBlocks, "years")}
             <button onClick={() => addTimeBlock("year")}>Add Year</button>
           </div>
           <div className="TimeContainer--month">
-            {displayTimeBlocks(monthBlocks)}
+            {displayTimeBlocks(monthBlocks, "months")}
             <button onClick={() => addTimeBlock("month")}>Add Month</button>
           </div>
           <div className="TimeContainer--week">
-            {displayTimeBlocks(weekBlocks)}
+            {displayTimeBlocks(weekBlocks, "weeks")}
             <button onClick={() => addTimeBlock("week")}>Add Week</button>
           </div>
           <div className="TimeContainer--day">
-            {displayTimeBlocks(dayBlocks)}
+            {displayTimeBlocks(dayBlocks, "days")}
             <button onClick={() => addTimeBlock("day")}>Add Day</button>
           </div>
         </div>

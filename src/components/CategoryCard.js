@@ -37,7 +37,7 @@ function CategoryCard(props) {
         {/* <p>This is a category card</p>
         <p>yearUuid: {props.yearUuid}</p>
         <p>selfUuid: {props.uuid}</p> */}
-        <h3>ITEMS</h3>
+        <h3>CATEGORY CARD</h3>
         {/* <button onClick={() => addCategoryItem()}>Add Category Item</button> */}
     </div>
   )

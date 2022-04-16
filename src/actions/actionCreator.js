@@ -29,3 +29,11 @@ export const addDay = (payload) => {
         item: payload
     };
 };
+
+//CATEGORIES
+export const addCategory = (payload) => {
+    return {
+        type: "ADD_CATEGORY", 
+        item: payload
+    };
+};
