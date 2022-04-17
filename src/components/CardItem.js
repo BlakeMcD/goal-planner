@@ -39,6 +39,7 @@ function CardItem(props) {
 
     const deleteItemFromStore = () => {
         console.log("deleteItem command sent")
+        console.log("deleteItemFromStore props:", props)
         dispatch(deleteItem({
             uuid: props.uuid
         }));

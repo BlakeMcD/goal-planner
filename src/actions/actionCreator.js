@@ -67,6 +67,13 @@ export const addCategory = (payload) => {
     };
 };
 
+export const deleteCategory = (payload) => {
+    return {
+        type: "DELETE_CATEGORY", 
+        item: payload
+    };
+};
+
 //ITEMS
 export const addItem = (payload) => {
     return {
@@ -85,6 +92,13 @@ export const editItemTitle = (payload) => {
 export const deleteItem = (payload) => {
     return {
         type: "DELETE_ITEM", 
+        item: payload
+    };
+};
+
+export const deleteItems = (payload) => {
+    return {
+        type: "DELETE_ITEMS", 
         item: payload
     };
 };

@@ -85,7 +85,7 @@ function App() {
     let allItems = [];
     for (let i = 0; i < timeBlock.length; i++) {
       allItems.push(
-        <TimeBlock key={i} timeCat={timeCategory} timeUuid={timeBlock[i].uuid}/> 
+        <TimeBlock key={timeBlock[i].uuid} timeCat={timeCategory} timeUuid={timeBlock[i].uuid}/> 
       )
     }
     return allItems;

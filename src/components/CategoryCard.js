@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addItem } from '../actions/actionCreator';
+import { addItem, deleteCategory, deleteItems } from '../actions/actionCreator';
 import CardItem from './CardItem';
 
 function CategoryCard(props) {
@@ -37,6 +37,18 @@ function CategoryCard(props) {
         }))
     }
 
+    const deleteCategoryCard = () => {
+
+      console.log("deleteCategoryCard function ran")
+      console.log("deleteCategoryCard props:", props)
+      dispatch(deleteCategory({
+          catUuid: props.uuid
+      }))
+      dispatch(deleteItems({
+        catUuid: props.uuid
+    }))
+  }
+
   return (
     <div className="CategoryCard">
         {/* <p>This is a category card</p>
@@ -45,6 +57,7 @@ function CategoryCard(props) {
         <h3>{props.category}</h3>
         {displayItems()}
         <button onClick={() => addCategoryItem()}>Add Category Item</button>
+        <button onClick={() => deleteCategoryCard()}>Delete this card</button>
     </div>
   )
 }

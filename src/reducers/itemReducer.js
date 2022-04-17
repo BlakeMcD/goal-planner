@@ -23,6 +23,14 @@ const itemReducer = (state = [], action) => {
                 console.log("action.item.uuid:", action.item.uuid);
                 return obj.uuid !== action.item.uuid
             })
+
+        case 'DELETE_ITEMS':
+            console.log("state:", state)
+            return state.filter((obj) => {
+                console.log("obj:", obj);
+                console.log("action.item.uuid:", action.item.uuid);
+                return obj.catUuid !== action.item.catUuid
+            })
             
         default: 
         return state;

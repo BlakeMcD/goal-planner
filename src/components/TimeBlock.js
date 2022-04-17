@@ -75,7 +75,7 @@ function TimeBlock(props) {
 
       if (catBlocks[i].timeUuid === props.timeUuid)
         allItems.push(
-          <CategoryCard key={i} timeCat={catBlocks[i].timeCat} uuid={catBlocks[i].uuid} timeUuid={catBlocks[i].timeUuid} category={catBlocks[i].category} />
+          <CategoryCard key={catBlocks[i].uuid} timeCat={catBlocks[i].timeCat} uuid={catBlocks[i].uuid} timeUuid={catBlocks[i].timeUuid} category={catBlocks[i].category} />
       );
     }
     return allItems
