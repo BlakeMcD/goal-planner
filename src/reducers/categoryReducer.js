@@ -12,6 +12,14 @@ const categoryReducer = (state = [], action) => {
                 console.log("action.item.uuid:", action.item.catUuid);
                 return obj.uuid !== action.item.catUuid
             })
+
+        case 'DELETE_CATEGORIES_BY_TIME':
+            console.log("state:", state)
+            return state.filter((obj) => {
+                console.log("obj:", obj);
+                console.log("action.item.uuid:", action.item.catUuid);
+                return obj.timeUuid !== action.item.timeUuid
+            })
             
         default: 
         return state;

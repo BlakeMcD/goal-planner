@@ -1,13 +1,15 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
-import { addItem, deleteCategory, deleteItems } from '../actions/actionCreator';
+import { addItem, deleteCategory, deleteItemsByCat } from '../actions/actionCreator';
 import CardItem from './CardItem';
 
 function CategoryCard(props) {
 
     //DISPATCH
   const dispatch = useDispatch();
+
+  console.log("CategoryCard Props:", props)
 
   //SELECTOR
   const catItems = useSelector((state) => {
@@ -23,7 +25,7 @@ function CategoryCard(props) {
   
         if (catItems[i].catUuid === props.uuid)
           allItems.push(
-            <CardItem key={catItems[i].uuid} catUuid={props.uuid} uuid={catItems[i].uuid}/>
+            <CardItem key={catItems[i].uuid} timeUuid={props.timeUuid} catUuid={props.uuid} uuid={catItems[i].uuid}/>
         );
       }
       return allItems
@@ -31,6 +33,7 @@ function CategoryCard(props) {
 
     const addCategoryItem = () => {
         dispatch(addItem({
+            timeUuid: props.timeUuid,
             catUuid: props.uuid, 
             uuid: uuidv4(),
             title: "test title"
@@ -44,7 +47,7 @@ function CategoryCard(props) {
       dispatch(deleteCategory({
           catUuid: props.uuid
       }))
-      dispatch(deleteItems({
+      dispatch(deleteItemsByCat({
         catUuid: props.uuid
     }))
   }

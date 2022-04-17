@@ -14,6 +14,11 @@ const weekReducer = (state = [], action) => {
                 }
                 return obj
             })
+        
+        case 'DELETE_WEEK':
+            return state.filter((obj) => {
+                return obj.uuid !== action.item.timeUuid
+            })
             
         default: 
         return state;

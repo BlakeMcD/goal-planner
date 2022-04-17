@@ -8,6 +8,7 @@ const itemReducer = (state = [], action) => {
             return state.map((obj) => {
                 if (obj.uuid === action.item.timeUuid) {
                     return({
+                        timeUuid: obj.timeUuid,
                         catUuid: obj.catUuid,
                         uuid: obj.uuid, 
                         title: action.item.text
@@ -24,12 +25,20 @@ const itemReducer = (state = [], action) => {
                 return obj.uuid !== action.item.uuid
             })
 
-        case 'DELETE_ITEMS':
+        case 'DELETE_ITEMS_BY_CAT':
             console.log("state:", state)
             return state.filter((obj) => {
                 console.log("obj:", obj);
                 console.log("action.item.uuid:", action.item.uuid);
                 return obj.catUuid !== action.item.catUuid
+            })
+        
+        case 'DELETE_ITEMS_BY_TIME':
+            console.log("state:", state)
+            return state.filter((obj) => {
+                console.log("obj:", obj);
+                console.log("action.item.uuid:", action.item.uuid);
+                return obj.timeUuid !== action.item.timeUuid
             })
             
         default: 

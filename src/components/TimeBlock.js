@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import CategoryCard from './CategoryCard';
-import { addCategory, editYearTitle, editMonthTitle, editWeekTitle, editDayTitle } from '../actions/actionCreator';
+import { addCategory, editYearTitle, editMonthTitle, editWeekTitle, editDayTitle, deleteYear, deleteMonth, deleteWeek, deleteDay } from '../actions/actionCreator';
 
 function TimeBlock(props) {
+
+  console.log("timeBlock props:", props)
 
   //CONSTANTS AND VARIABLES
   const categoryOptions = [
@@ -133,6 +135,37 @@ function TimeBlock(props) {
     }
   };
 
+  const deleteTimeBlock = () => {
+    switch (props.timeCat) {
+      case "years":
+        dispatch(deleteYear({
+          timeUuid: props.timeUuid,
+        }));
+        break;
+
+      case "months":
+        dispatch(deleteMonth({
+          timeUuid: props.timeUuid,
+        }));
+        break;
+
+      case "weeks":
+        dispatch(deleteWeek({
+          timeUuid: props.timeUuid,
+        }));
+        break;
+      
+      case "days":
+      dispatch(deleteDay({
+        timeUuid: props.timeUuid,
+      }));
+        break;
+
+      default:
+        console.log("unrecognized props passed to useEffect")
+    }
+  }
+
   //RETURN
   return (
     <div className="TimeBlock">
@@ -142,6 +175,7 @@ function TimeBlock(props) {
         {/* </form> */}
         {displayCategoryCards()}
         {displayAddCategoryCardButtons(categoryOptions)}
+        <button onClick={deleteTimeBlock}>DELETE TIMEBLOCK</button>
     </div> 
   )
 }

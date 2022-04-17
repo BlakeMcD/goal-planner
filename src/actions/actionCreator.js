@@ -13,6 +13,13 @@ export const editYearTitle = (payload) => {
     };
 };
 
+export const deleteYear = (payload) => {
+    return {
+        type: "DELETE_YEAR", 
+        item: payload
+    };
+};
+
 //MONTH
 export const addMonth = (payload) => {
     return {
@@ -24,6 +31,13 @@ export const addMonth = (payload) => {
 export const editMonthTitle = (payload) => {
     return {
         type: "EDIT_MONTH_TITLE", 
+        item: payload
+    };
+};
+
+export const deleteMonth = (payload) => {
+    return {
+        type: "DELETE_MONTH", 
         item: payload
     };
 };
@@ -43,6 +57,13 @@ export const editWeekTitle = (payload) => {
     };
 };
 
+export const deleteWeek = (payload) => {
+    return {
+        type: "DELETE_WEEK", 
+        item: payload
+    };
+};
+
 //DAY
 export const addDay = (payload) => {
     return {
@@ -54,6 +75,13 @@ export const addDay = (payload) => {
 export const editDayTitle = (payload) => {
     return {
         type: "EDIT_DAY_TITLE", 
+        item: payload
+    };
+};
+
+export const deleteDay = (payload) => {
+    return {
+        type: "DELETE_DAY", 
         item: payload
     };
 };
@@ -70,6 +98,13 @@ export const addCategory = (payload) => {
 export const deleteCategory = (payload) => {
     return {
         type: "DELETE_CATEGORY", 
+        item: payload
+    };
+};
+
+export const deleteCategoriesByTime = (payload) => {
+    return {
+        type: "DELETE_CATEGORIES_BY_TIME", 
         item: payload
     };
 };
@@ -96,9 +131,16 @@ export const deleteItem = (payload) => {
     };
 };
 
-export const deleteItems = (payload) => {
+export const deleteItemsByCat = (payload) => {
     return {
-        type: "DELETE_ITEMS", 
+        type: "DELETE_ITEMS_BY_CAT", 
+        item: payload
+    };
+};
+
+export const deleteItemsByTime = (payload) => {
+    return {
+        type: "DELETE_ITEMS_BY_TIME", 
         item: payload
     };
 };

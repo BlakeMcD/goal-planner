@@ -14,6 +14,11 @@ const dayReducer = (state = [], action) => {
                 }
                 return obj
             })
+
+        case 'DELETE_DAY':
+            return state.filter((obj) => {
+                return obj.uuid !== action.item.timeUuid
+            })
             
         default: 
         return state;
