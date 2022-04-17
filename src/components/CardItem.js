@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { editItemTitle } from '../actions/actionCreator';
+import { editItemTitle, deleteItem } from '../actions/actionCreator';
 
 function CardItem(props) {
 
@@ -37,10 +37,18 @@ function CardItem(props) {
 
     const handleFocus = (event) => event.target.select();
 
+    const deleteItemFromStore = () => {
+        console.log("deleteItem command sent")
+        dispatch(deleteItem({
+            uuid: props.uuid
+        }));
+    }
+
     //RETURN
     return (
         <div>
             <input value={itemText} onChange={changeText} onFocus={handleFocus} onKeyDown={(event) => checkIfEnterPressed(event)}></input>
+            <button onClick={deleteItemFromStore}>Delete Item</button>
         </div>
     )
 }

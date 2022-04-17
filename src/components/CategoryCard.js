@@ -11,6 +11,7 @@ function CategoryCard(props) {
 
   //SELECTOR
   const catItems = useSelector((state) => {
+    console.log("CategoryCard State Items:",state.items)
     return state.items;
   })
 
@@ -22,7 +23,7 @@ function CategoryCard(props) {
   
         if (catItems[i].catUuid === props.uuid)
           allItems.push(
-            <CardItem key={i} catUuid={props.uuid} uuid={catItems[i].uuid}/>
+            <CardItem key={catItems[i].uuid} catUuid={props.uuid} uuid={catItems[i].uuid}/>
         );
       }
       return allItems

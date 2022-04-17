@@ -10,10 +10,18 @@ const itemReducer = (state = [], action) => {
                     return({
                         catUuid: obj.catUuid,
                         uuid: obj.uuid, 
-                        year: action.item.text
+                        title: action.item.text
                     })
                 }
                 return obj
+            });
+
+        case 'DELETE_ITEM':
+            console.log("state:", state)
+            return state.filter((obj) => {
+                console.log("obj:", obj);
+                console.log("action.item.uuid:", action.item.uuid);
+                return obj.uuid !== action.item.uuid
             })
             
         default: 
@@ -23,8 +31,20 @@ const itemReducer = (state = [], action) => {
 
 export default itemReducer;
 
-//REFERENCE
-// dispatch(editItemTitle({
-//     timeUuid: props.uuid,
-//     text: itemText
-// }));
+// case 'DELETE_YEAR_CATEGORY_ITEM':
+//     return state.map(obj => {
+//         return {
+//             ...obj, 
+//             categories: obj.categories.map((categoryBlock) => {
+//                 if (categoryBlock.category === action.item.category) {
+//                     return {
+//                         category: categoryBlock.category, 
+//                         items: categoryBlock.items.filter((item) => {
+//                             return item.uuid !== action.item.uuid 
+//                         })
+//                     }
+//                 }
+//                 return categoryBlock
+//             })
+//         }
+//     }) 

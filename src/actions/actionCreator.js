@@ -81,3 +81,10 @@ export const editItemTitle = (payload) => {
         item: payload
     };
 };
+
+export const deleteItem = (payload) => {
+    return {
+        type: "DELETE_ITEM", 
+        item: payload
+    };
+};
