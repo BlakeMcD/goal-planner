@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import CategoryCard from './CategoryCard';
-import { addCategory, editYearTitle, editMonthTitle, editWeekTitle, editDayTitle, deleteYear, deleteMonth, deleteWeek, deleteDay } from '../actions/actionCreator';
+import { addCategory, editYearTitle, editMonthTitle, editWeekTitle, editDayTitle, deleteYear, deleteMonth, deleteWeek, deleteDay, deleteCategoriesByTime } from '../actions/actionCreator';
 
 function TimeBlock(props) {
 
@@ -136,6 +136,8 @@ function TimeBlock(props) {
   };
 
   const deleteTimeBlock = () => {
+
+    //delete timeBlock
     switch (props.timeCat) {
       case "years":
         dispatch(deleteYear({
@@ -164,6 +166,11 @@ function TimeBlock(props) {
       default:
         console.log("unrecognized props passed to useEffect")
     }
+
+    //delete Categories
+    dispatch(deleteCategoriesByTime({
+      timeUuid: props.timeUuid
+    }))
   }
 
   //RETURN
