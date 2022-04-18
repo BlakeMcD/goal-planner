@@ -7,15 +7,6 @@ import { addCategory, editYearTitle, editMonthTitle, editWeekTitle, editDayTitle
 function TimeBlock(props) {
 
   //CONSTANTS AND VARIABLES
-  const categoryOptions = [
-    "Body", 
-    "Mind", 
-    "Family",
-    "Relationships", 
-    "Money", 
-    "Career", 
-    "Misc"
-  ];
 
   //STATES
   const [cardTitle, setCardTitle] = useState(props.timeCat.replace(/s/g,''));
@@ -24,6 +15,11 @@ function TimeBlock(props) {
   const dispatch = useDispatch();
 
   //SELECTOR
+
+  const categoryOptions = useSelector((state) => {
+    return state.options;
+  });
+
   const catBlocks = useSelector((state) => {
     return state.categories;
   });

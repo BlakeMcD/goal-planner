@@ -19,6 +19,11 @@ function App() {
     return years
   });
 
+  const categoryOptions = useSelector((state) => {
+    console.log("state.filters", state.options)
+    return state.options;
+  });
+
   const monthBlocks = useSelector((state) => {
     const months = state.months;
     if (months === undefined) {
@@ -78,11 +83,21 @@ function App() {
   }
 
   const displayTimeBlocks = (timeBlock, timeCategory) => {
-
     let allItems = [];
     for (let i = 0; i < timeBlock.length; i++) {
       allItems.push(
         <TimeBlock key={timeBlock[i].uuid} timeCat={timeCategory} timeUuid={timeBlock[i].uuid}/> 
+      )
+    }
+    return allItems;
+  }
+
+  const displayFilterBlocks = (catOptions) => {
+    let allItems = [];
+    for (let i = 0; i < catOptions.length; i++) {
+      console.log("Line 97 ran")
+      allItems.push(
+        <CategoryFilterButton key={uuidv4()} filterCategory={catOptions[i]}/>
       )
     }
     return allItems;
@@ -95,10 +110,7 @@ function App() {
       <div className="SidebarAndTimeContainer">
         <div className="SidebarContainer">
           <h1>Sidebar Container</h1>
-          <CategoryFilterButton filterCategory={"mind"}/>
-          <CategoryFilterButton filterCategory={"body"}/>
-          <CategoryFilterButton filterCategory={"family"}/>
-          <CategoryFilterButton filterCategory={"career"}/>
+          {displayFilterBlocks(categoryOptions)}
         </div>
         <div className="TimeContainer">
           <div className="TimeContainer--year">

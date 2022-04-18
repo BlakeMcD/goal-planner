@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import filterReducer from "./filterReducer";
+import optionsReducer from "./optionsReducer";
 import yearReducer from "./yearReducer";
 import monthReducer from "./monthReducer";
 import weekReducer from "./weekReducer";
@@ -8,6 +9,7 @@ import categoryReducer from "./categoryReducer";
 import itemReducer from "./itemReducer";
 
 const rootReducer = combineReducers({
+    options: optionsReducer,
     filters: filterReducer,
     years: yearReducer, 
     months: monthReducer, 
