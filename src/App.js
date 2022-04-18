@@ -3,6 +3,7 @@ import TimeBlock from './components/TimeBlock';
 import { useDispatch, useSelector } from 'react-redux';
 import { addYear, addMonth, addWeek, addDay } from './actions/actionCreator';
 import { v4 as uuidv4 } from 'uuid';
+import CategoryFilterButton from './components/CategoryFilterButton';
 
 function App() {
 
@@ -47,28 +48,24 @@ function App() {
 
     switch (timeBlock) {
       case "year":
-        console.log("year dispatch sent");
         dispatch(addYear({
           uuid: uuidv4(),
           year: "Dispatch Title",
         }));
         break;
       case "month":
-        console.log("month dispatch sent");
         dispatch(addMonth({
           uuid: uuidv4(),
           month: "Dispatch Title",
         }));
         break;
       case "week":
-        console.log("week dispatch sent");
         dispatch(addWeek({
           uuid: uuidv4(),
           week: "Dispatch Title",
         }));
         break;
       case "day":
-        console.log("day dispatch sent");
         dispatch(addDay({
           uuid: uuidv4(),
           day: "Dispatch Title",
@@ -98,6 +95,10 @@ function App() {
       <div className="SidebarAndTimeContainer">
         <div className="SidebarContainer">
           <h1>Sidebar Container</h1>
+          <CategoryFilterButton filterCategory={"mind"}/>
+          <CategoryFilterButton filterCategory={"body"}/>
+          <CategoryFilterButton filterCategory={"family"}/>
+          <CategoryFilterButton filterCategory={"career"}/>
         </div>
         <div className="TimeContainer">
           <div className="TimeContainer--year">

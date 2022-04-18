@@ -4,8 +4,6 @@ import { editItemTitle, deleteItem } from '../actions/actionCreator';
 
 function CardItem(props) {
 
-    console.log("CardItem props: ", props)
-
     //STATES
     const [itemText, setItemText] = useState("type here");
 
@@ -14,7 +12,6 @@ function CardItem(props) {
 
     //USEEFFECT
     useEffect(() => {
-        console.log("props passed to CardItem useEffect:", props)
 
         dispatch(editItemTitle({
             timeUuid: props.uuid,
@@ -38,8 +35,6 @@ function CardItem(props) {
     const handleFocus = (event) => event.target.select();
 
     const deleteItemFromStore = () => {
-        console.log("deleteItem command sent")
-        console.log("deleteItemFromStore props:", props)
         dispatch(deleteItem({
             uuid: props.uuid
         }));

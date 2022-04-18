@@ -9,11 +9,8 @@ function CategoryCard(props) {
     //DISPATCH
   const dispatch = useDispatch();
 
-  console.log("CategoryCard Props:", props)
-
   //SELECTOR
   const catItems = useSelector((state) => {
-    console.log("CategoryCard State Items:",state.items)
     return state.items;
   })
 
@@ -41,9 +38,6 @@ function CategoryCard(props) {
     }
 
     const deleteCategoryCard = () => {
-
-      console.log("deleteCategoryCard function ran")
-      console.log("deleteCategoryCard props:", props)
       dispatch(deleteCategory({
           catUuid: props.uuid
       }))
@@ -54,9 +48,6 @@ function CategoryCard(props) {
 
   return (
     <div className="CategoryCard">
-        {/* <p>This is a category card</p>
-        <p>yearUuid: {props.yearUuid}</p>
-        <p>selfUuid: {props.uuid}</p> */}
         <h3>{props.category}</h3>
         {displayItems()}
         <button onClick={() => addCategoryItem()}>Add Category Item</button>

@@ -6,8 +6,6 @@ import { addCategory, editYearTitle, editMonthTitle, editWeekTitle, editDayTitle
 
 function TimeBlock(props) {
 
-  console.log("timeBlock props:", props)
-
   //CONSTANTS AND VARIABLES
   const categoryOptions = [
     "Body", 
@@ -28,12 +26,14 @@ function TimeBlock(props) {
   //SELECTOR
   const catBlocks = useSelector((state) => {
     return state.categories;
-  })
+  });
+
+  const catFilters = useSelector((state) => {
+    return state.filters;
+  });
 
   //USEEFFECT
   useEffect(() => {
-    console.log("props passed to useEffect:", props)
-
     switch (props.timeCat) {
       case "years":
         dispatch(editYearTitle({
@@ -65,20 +65,25 @@ function TimeBlock(props) {
 
       default:
         console.log("unrecognized props passed to useEffect")
-    }
-
-    
-}, [cardTitle])
+    }    
+  }, [cardTitle])
 
   //FUNCTIONS
   const displayCategoryCards = () => {
+    console.log("does line 75 run in displayCategoryCards when filters are added and removed?")
     let allItems = [];
+
     for (let i = 0; i < catBlocks.length; i++) {
 
-      if (catBlocks[i].timeUuid === props.timeUuid)
-        allItems.push(
-          <CategoryCard key={catBlocks[i].uuid} timeCat={catBlocks[i].timeCat} uuid={catBlocks[i].uuid} timeUuid={catBlocks[i].timeUuid} category={catBlocks[i].category} />
-      );
+      if (catBlocks[i].timeUuid === props.timeUuid) {
+
+        console.log("filters result:", !catFilters.includes(catBlocks[i].category))
+
+        if (!catFilters.includes(catBlocks[i].category.toLowerCase())) {
+          allItems.push(
+            <CategoryCard key={catBlocks[i].uuid} timeCat={catBlocks[i].timeCat} uuid={catBlocks[i].uuid} timeUuid={catBlocks[i].timeUuid} category={catBlocks[i].category} />
+        )}
+      };
     }
     return allItems
   };

@@ -1,3 +1,18 @@
+//FILTER
+export const addFilter = (payload) => {
+    return {
+        type: "ADD_FILTER", 
+        item: payload
+    };
+};
+
+export const removeFilter = (payload) => {
+    return {
+        type: "REMOVE_FILTER", 
+        item: payload
+    };
+};
+
 //YEAR
 export const addYear = (payload) => {
     return {
