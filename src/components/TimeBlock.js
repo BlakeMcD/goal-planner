@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import CategoryCard from './CategoryCard';
 import { addCategory, editYearTitle, editMonthTitle, editWeekTitle, editDayTitle, deleteYear, deleteMonth, deleteWeek, deleteDay, deleteCategoriesByTime, deleteItemsByTime } from '../actions/actionCreator';
+import ICONS from '../images/icons';
 
 function TimeBlock(props) {
 
@@ -66,7 +67,6 @@ function TimeBlock(props) {
 
   //FUNCTIONS
   const displayCategoryCards = () => {
-    console.log("does line 75 run in displayCategoryCards when filters are added and removed?")
     let allItems = [];
 
     for (let i = 0; i < catBlocks.length; i++) {
@@ -113,10 +113,43 @@ function TimeBlock(props) {
   const displayAddCategoryCardButtons = (catOptions) => {
     let allItems = [];
     for (let i = 0; i < catOptions.length; i++) {
+    
+      let iconImage = "";
+
+      switch (catOptions[i]) {
+        case 'health':
+          iconImage = ICONS.healthBlackOutline;
+          break;
+        case 'finance':
+          iconImage = ICONS.financeBlackOutline;
+          break;
+        case 'career':
+          iconImage = ICONS.careerBlackOutline;
+          break;
+        case 'relationships':
+          iconImage = ICONS.relationshipsBlackOutline;
+          break;
+        case 'personal':
+          iconImage = ICONS.personalBlackOutline;
+          break;
+        case 'misc':
+          iconImage = ICONS.miscBlackOutline;
+          break;
+        default: 
+           iconImage = ICONS.careerBlackOutline;
+      }
+
       allItems.push(
-        <button key={i} onClick={() => addCategoryCard(catOptions[i])}>Add Category Card {catOptions[i]}</button>
+          <div className="iconImage" key={uuidv4()}>
+          {/* <button key={i} onClick={() => addCategoryCard(catOptions[i])}>Add Category Card {catOptions[i]}</button> */}
+            <img src={iconImage} onClick={() => addCategoryCard(catOptions[i])}/>
+          </div>
       )}
-    return allItems
+    return (
+      <div className="container__iconImages">
+        {allItems}
+      </div>
+      )
   }
 
   const changeTitle = (event) => {
@@ -182,13 +215,13 @@ function TimeBlock(props) {
   //RETURN
   return (
     <div className="TimeBlock">
-
-        {/* <form onSubmit={handleSubmit}> */}
+        <div className="TimeBlock__Title">
           <input type="text" value={cardTitle} onChange={changeTitle} onFocus={handleFocus} onKeyDown={(event) => checkIfEnterPressed(event)}></input>
-        {/* </form> */}
-        {displayCategoryCards()}
+        </div>
+        <p className="headingHelper">Add a category card</p>
         {displayAddCategoryCardButtons(categoryOptions)}
-        <button onClick={deleteTimeBlock}>DELETE TIMEBLOCK</button>
+        {displayCategoryCards()}
+        <img className="DeleteTimeblock" src={ICONS.closeBlackOutline} onClick={deleteTimeBlock}/>
     </div> 
   )
 }

@@ -1,10 +1,9 @@
 const optionsReducer = (state = [
-    "body", 
-    "mind", 
-    "family",
+    "health", 
+    "finance", 
+    "career",
     "relationships", 
-    "money", 
-    "career", 
+    "personal",  
     "misc"
   ], action) => {
     switch(action.type) {

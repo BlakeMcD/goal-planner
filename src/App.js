@@ -115,19 +115,19 @@ function App() {
         <div className="TimeContainer">
           <div className="TimeContainer--year">
             {displayTimeBlocks(yearBlocks, "years")}
-            <button onClick={() => addTimeBlock("year")}>Add Year</button>
+            <button className="Button__AddTimeContainer" onClick={() => addTimeBlock("year")}>Add Year</button>
           </div>
           <div className="TimeContainer--month">
             {displayTimeBlocks(monthBlocks, "months")}
-            <button onClick={() => addTimeBlock("month")}>Add Month</button>
+            <button className="Button__AddTimeContainer" onClick={() => addTimeBlock("month")}>Add Month</button>
           </div>
           <div className="TimeContainer--week">
             {displayTimeBlocks(weekBlocks, "weeks")}
-            <button onClick={() => addTimeBlock("week")}>Add Week</button>
+            <button className="Button__AddTimeContainer" onClick={() => addTimeBlock("week")}>Add Week</button>
           </div>
           <div className="TimeContainer--day">
             {displayTimeBlocks(dayBlocks, "days")}
-            <button onClick={() => addTimeBlock("day")}>Add Day</button>
+            <button className="Button__AddTimeContainer" onClick={() => addTimeBlock("day")}>Add Day</button>
           </div>
         </div>
       </div>

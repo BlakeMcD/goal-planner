@@ -1,17 +1,36 @@
+/* ROOT AND GENERAL */
+:root {
+
+  --border-radius: 8px;
+
+  --page-boundary-margin: 10px;
+  --container-margin: 10px;
+  --timeblock-margin: 20px;
+  --timeblock-title-padding: 10px;
+  --button-height: 40px;
+  --heading-helper: 10px;
+  --container-iconImages: 20px;
+  --iconimage-padding: 10px;
+  --category-card-margin: 10px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0px;
 }
 
+/* TOP LEVEL CONTAINERS */
 .SidebarAndTimeContainer {
   display: flex;
+  margin: var(--page-boundary-margin);
 }
 
 .SidebarContainer {
   flex: 1;
   background: blue;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   text-align: center;
+  margin: var(--container-margin);
 }
 
 .TimeContainer {
@@ -21,21 +40,106 @@
 
 .TimeContainer--year, .TimeContainer--month, .TimeContainer--week, .TimeContainer--day {
   flex: 1;
+  margin: var(--container-margin);
 }
 
+/* TIMEBLOCKS */
 .TimeBlock {
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   border: 2px solid black;
   background-color: green;
   text-align: center; 
+  margin-bottom: var(--timeblock-margin);
+  position: relative;
 }
 
+.TimeBlock__Title input{
+  text-align: center;
+  font-size: xx-large;
+  background: transparent;
+  border: none;
+  padding-top: var(--timeblock-title-padding);
+  padding-bottom: var(--timeblock-title-padding);
+}
+
+/* CATEGORY CARDS */
 .CategoryCard {
   width: 90%;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   border: 2px solid black;
   background-color: gold;
   text-align: center;
-  margin: auto;
+  margin: var(--category-card-margin) auto;
+  position: relative;
 }
 
+/* ITEM CONTAINER */
+.ItemContainer {
+  display: flex;
+  margin: 10px;
+}
+
+.ItemContainer__Input {
+  flex: 9;
+}
+
+.ItemContainer__DeleteButton {
+  flex: 1;
+  max-width: 100%;
+}
+
+.ItemContainer__DeleteButton.align-self {
+  align-self: center;
+}
+
+/* BUTTONS */
+.Button__AddTimeContainer {
+  width: 100%;
+  height: var(--button-height);
+}
+
+.Button__AddCategoryItem {
+  margin: var(--category-card-margin);
+}
+
+.Button__DeleteIcon {
+  height: 16px;
+}
+
+/* ICONS */
+.container__iconImages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: blue;
+  margin-left: var(--container-iconImages);
+  margin-right: var(--container-iconImages);
+  border-radius: var(--border-radius);
+}
+
+.iconImage {
+  flex: 1 0 30%;
+  margin: 5px;
+  padding-top: var(--iconimage-padding);
+}
+
+.iconImage img:hover {
+  cursor: pointer;
+}
+
+/* DELETE BUTTONS */
+.DeleteTimeblock {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 5px;
+}
+
+.DeleteTimeBlock__CategoryCard {
+  width: 24px;
+}
+
+/* TEXT */
+.headingHelper {
+  margin-bottom: var(--heading-helper);
+}

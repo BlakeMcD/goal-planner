@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import { addItem, deleteCategory, deleteItemsByCat } from '../actions/actionCreator';
 import CardItem from './CardItem';
+import ICONS from '../images/icons';
 
 function CategoryCard(props) {
 
@@ -50,8 +51,9 @@ function CategoryCard(props) {
     <div className="CategoryCard">
         <h3>{props.category}</h3>
         {displayItems()}
-        <button onClick={() => addCategoryItem()}>Add Category Item</button>
-        <button onClick={() => deleteCategoryCard()}>Delete this card</button>
+        <button className="Button__AddCategoryItem" onClick={() => addCategoryItem()}>Add Category Item</button>
+        {/* <button onClick={() => deleteCategoryCard()}>Delete this card</button> */}
+        <img className="DeleteTimeblock DeleteTimeBlock__CategoryCard" src={ICONS.closeBlackOutline} onClick={deleteCategoryCard}/>
     </div>
   )
 }
