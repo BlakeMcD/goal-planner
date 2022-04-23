@@ -218,7 +218,7 @@ function TimeBlock(props) {
         <div className="TimeBlock__Title">
           <input type="text" value={cardTitle} onChange={changeTitle} onFocus={handleFocus} onKeyDown={(event) => checkIfEnterPressed(event)}></input>
         </div>
-        <p className="headingHelper">Add a category card</p>
+        {/* <p className="headingHelper">Add a category card</p> */}
         {displayAddCategoryCardButtons(categoryOptions)}
         {displayCategoryCards()}
         <img className="DeleteTimeblock" src={ICONS.closeBlackOutline} onClick={deleteTimeBlock}/>

@@ -45,9 +45,10 @@ function CardItem(props) {
     //RETURN
     return (
         <div className="ItemContainer">
+            <img className="ItemContainer__DeleteButton" src={ICONS.closeBlackOutline} onClick={deleteItemFromStore}/>
             <TextareaAutosize className="ItemContainer__Input" value={itemText} onChange={changeText} onFocus={handleFocus} onKeyDown={(event) => checkIfEnterPressed(event)}></TextareaAutosize>
             {/* <button onClick={deleteItemFromStore}>Delete Item</button> */}
-            {/* <img className="ItemContainer__DeleteButton" src={ICONS.closeBlackOutline} onClick={deleteItemFromStore}/> */}
+            
         </div>
     )
 }

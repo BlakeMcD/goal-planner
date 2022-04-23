@@ -95,7 +95,6 @@ function App() {
   const displayFilterBlocks = (catOptions) => {
     let allItems = [];
     for (let i = 0; i < catOptions.length; i++) {
-      console.log("Line 97 ran")
       allItems.push(
         <CategoryFilterButton key={uuidv4()} filterCategory={catOptions[i]}/>
       )

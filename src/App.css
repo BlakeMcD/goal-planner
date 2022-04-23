@@ -64,16 +64,56 @@
 
 /* CATEGORY CARDS */
 .CategoryCard {
-  width: 90%;
+  /* width: 90%; */
   border-radius: var(--border-radius);
   border: 2px solid black;
   background-color: gold;
   text-align: center;
-  margin: var(--category-card-margin) auto;
+  /* margin: auto; */
+  margin-left:  var(--container-iconImages);
+  margin-right:  var(--container-iconImages);
   position: relative;
+  margin-bottom: var(--container-margin);
 }
 
 /* ITEM CONTAINER */
+
+.ItemContainer {
+  /* display: flex; */
+  border-bottom: 1px dotted black;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.ItemContainer::after {
+  /* display: flex; */
+  clear: both;
+}
+
+.ItemContainer:first-of-type {
+  border-top: 1px dotted black;
+}
+
+.ItemContainer__Input {
+  /* flex: 9; */
+  /* border-radius: var(--border-radius); */
+  background-color: transparent;
+  border: none;
+  resize: none;
+  width: 92%;
+  /* float: left; */
+}
+
+.ItemContainer__DeleteButton {
+  /* flex: 1; */
+  align-self: flex-start;
+  width: 5%;
+  float: left;
+  vertical-align: middle;
+  margin-top: 1%;
+  margin-left: 1%;
+  margin-right: 2%;
+}
 
 /* BUTTONS */
 .Button__AddTimeContainer {
@@ -95,9 +135,13 @@
   flex-wrap: wrap;
   justify-content: space-between;
   background-color: blue;
+  border: 2px solid black;
   margin-left: var(--container-iconImages);
   margin-right: var(--container-iconImages);
+  /* margin:auto; */
   border-radius: var(--border-radius);
+  margin-bottom: var(--container-margin);
+
 }
 
 .iconImage {
@@ -122,7 +166,12 @@
   width: 24px;
 }
 
-/* TEXT */
+/* TEXT AND HEADINGS*/
+
+h3 {
+  margin: var(--container-margin);
+};
+
 .headingHelper {
   margin-bottom: var(--heading-helper);
 }
