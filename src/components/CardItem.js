@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { editItemTitle, deleteItem } from '../actions/actionCreator';
 import ICONS from '../images/icons';
+import TextareaAutosize from 'react-textarea-autosize';
 
 function CardItem(props) {
 
@@ -44,9 +45,9 @@ function CardItem(props) {
     //RETURN
     return (
         <div className="ItemContainer">
-            <textarea className="ItemContainer__Input" value={itemText} onChange={changeText} onFocus={handleFocus} onKeyDown={(event) => checkIfEnterPressed(event)}></textarea>
+            <TextareaAutosize className="ItemContainer__Input" value={itemText} onChange={changeText} onFocus={handleFocus} onKeyDown={(event) => checkIfEnterPressed(event)}></TextareaAutosize>
             {/* <button onClick={deleteItemFromStore}>Delete Item</button> */}
-            <img className="ItemContainer__DeleteButton" src={ICONS.closeBlackOutline} onClick={deleteItemFromStore}/>
+            {/* <img className="ItemContainer__DeleteButton" src={ICONS.closeBlackOutline} onClick={deleteItemFromStore}/> */}
         </div>
     )
 }

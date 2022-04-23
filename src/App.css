@@ -74,23 +74,6 @@
 }
 
 /* ITEM CONTAINER */
-.ItemContainer {
-  display: flex;
-  margin: 10px;
-}
-
-.ItemContainer__Input {
-  flex: 9;
-}
-
-.ItemContainer__DeleteButton {
-  flex: 1;
-  max-width: 100%;
-}
-
-.ItemContainer__DeleteButton.align-self {
-  align-self: center;
-}
 
 /* BUTTONS */
 .Button__AddTimeContainer {
@@ -143,3 +126,4 @@
 .headingHelper {
   margin-bottom: var(--heading-helper);
 }
+
