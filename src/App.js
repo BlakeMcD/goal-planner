@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addYear, addMonth, addWeek, addDay } from './actions/actionCreator';
 import { v4 as uuidv4 } from 'uuid';
 import CategoryFilterButton from './components/CategoryFilterButton';
+import ThemeButton from './components/ThemeButton';
 
 function App() {
 
@@ -18,6 +19,10 @@ function App() {
     }
     return years
   });
+
+  const themeColor = useSelector((state) => {
+    return state.theme;
+    });
 
   const categoryOptions = useSelector((state) => {
     console.log("state.filters", state.options)
@@ -102,14 +107,28 @@ function App() {
     return allItems;
   }
 
+  const displayThemeButtons = (catOptions) => {
+    let allItems = [];
+    for (let i = 0; i < catOptions.length; i++) {
+      allItems.push(
+        <CategoryFilterButton key={uuidv4()} filterCategory={catOptions[i]}/>
+      )
+    }
+    return allItems;
+  }
+
   //RETURN STATEMENT
 
   return (
-    <div className="App">
+    <div className="App" data-theme={themeColor}>
       <div className="SidebarAndTimeContainer">
         <div className="SidebarContainer">
           <h1>Sidebar Container</h1>
+          <h2>Filters</h2>
           {displayFilterBlocks(categoryOptions)}
+          <h2>Themes</h2>
+          <ThemeButton theme="dark" buttonColor="black"/>
+          <ThemeButton theme="default" buttonColor="grey"/>
         </div>
         <div className="TimeContainer">
           <div className="TimeContainer--year">

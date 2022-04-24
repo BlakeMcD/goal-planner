@@ -1,22 +1,17 @@
-/* ROOT AND GENERAL */
-:root {
 
-  --border-radius: 8px;
-
-  --page-boundary-margin: 10px;
-  --container-margin: 10px;
-  --timeblock-margin: 20px;
-  --timeblock-title-padding: 10px;
-  --button-height: 40px;
-  --heading-helper: 10px;
-  --container-iconImages: 20px;
-  --iconimage-padding: 10px;
-  --category-card-margin: 10px;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0px;
+.App {
+  background-color: var(--theme-background);
+  height: 100vh;
+  margin-top: -10px;
 }
 
 /* TOP LEVEL CONTAINERS */
@@ -27,10 +22,11 @@
 
 .SidebarContainer {
   flex: 1;
-  background: blue;
   border-radius: var(--border-radius);
   text-align: center;
-  margin: var(--container-margin);
+  /* margin: var(--container-margin); */
+  /* background: grey; */
+  background: var(--theme-sidebar-container);
 }
 
 .TimeContainer {
@@ -40,14 +36,15 @@
 
 .TimeContainer--year, .TimeContainer--month, .TimeContainer--week, .TimeContainer--day {
   flex: 1;
-  margin: var(--container-margin);
+  margin-left: var(--container-margin);
+  margin-right: var(--container-margin);
 }
 
 /* TIMEBLOCKS */
 .TimeBlock {
   border-radius: var(--border-radius);
-  border: 2px solid black;
-  background-color: green;
+  border: 2px solid var(--theme-border-color);
+  background-color: var(--theme-timecontainer);
   text-align: center; 
   margin-bottom: var(--timeblock-margin);
   position: relative;
@@ -66,8 +63,8 @@
 .CategoryCard {
   /* width: 90%; */
   border-radius: var(--border-radius);
-  border: 2px solid black;
-  background-color: gold;
+  border: 2px solid var(--theme-border-color);
+  background-color: var(--theme-category-container);
   text-align: center;
   /* margin: auto; */
   margin-left:  var(--container-iconImages);
@@ -116,6 +113,17 @@
 }
 
 /* BUTTONS */
+
+button {
+  background-color: var(--theme-button-regular);
+  border-color:var(--theme-button-border-color);
+  border-radius: var(--border-radius);
+}
+
+button:hover {
+  background-color: var(--theme-button-hover);
+}
+
 .Button__AddTimeContainer {
   width: 100%;
   height: var(--button-height);
@@ -129,13 +137,20 @@
   height: 16px;
 }
 
+.themeButton {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--border-radius);
+  border: 2px solid var(--theme-border-color);
+}
+
 /* ICONS */
 .container__iconImages {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background-color: blue;
-  border: 2px solid black;
+  background-color: var(--theme-category-selector);
+  border: 2px solid var(--theme-border-color);
   margin-left: var(--container-iconImages);
   margin-right: var(--container-iconImages);
   /* margin:auto; */
@@ -175,4 +190,5 @@ h3 {
 .headingHelper {
   margin-bottom: var(--heading-helper);
 }
+
 

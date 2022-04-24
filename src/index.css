@@ -1,13 +1,66 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ROOT AND GENERAL */
+:root {
+  --border-radius: 8px;
+  --page-boundary-margin: 10px;
+  --container-margin: 10px;
+  --timeblock-margin: 20px;
+  --timeblock-title-padding: 10px;
+  --button-height: 40px;
+  --heading-helper: 10px;
+  --container-iconImages: 20px;
+  --iconimage-padding: 10px;
+  --category-card-margin: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+[data-theme='default'] {
+  --theme-background: white;
+  --theme-sidebar-container: blue;
+  --theme-text-primary-color: black;
+  --theme-text-secondary-color: grey;
+  --theme-timecontainer: green;
+  --theme-category-container: yellow;
+  --theme-category-selector: pink;
+  --theme-button-regular: lightgrey;
+  --theme-button-hover: darkgrey;
+  --theme-button-border-color: grey;
+  --theme-border-color: black;
+}
+
+[data-theme='dark'] {
+  --theme-background: black;
+  --theme-sidebar-container: grey;
+  --theme-text-primary-color: white;
+  --theme-text-secondary-color: lightgrey;
+  --theme-timecontainer: grey;
+  --theme-category-container: grey;
+  --theme-category-selector: grey;
+  --theme-button-regular: lightgrey;
+  --theme-button-hover: darkgrey;
+  --theme-button-border-color: grey;
+  --theme-border-color: darkgrey;
+}
+
+[data-theme='pink'] {
+  --theme-background: white;
+  --theme-sidebar-container: blue;
+  --theme-text-primary-color: black;
+  --theme-text-secondary-color: grey;
+  --theme-timecontainer: green;
+  --theme-category-container: yellow;
+  --theme-category-selector: grey;
+  --theme-button-regular: lightgrey;
+  --theme-button-hover: darkgrey;
+  --theme-button-border-color: grey;
+  --theme-border-color: black;
+}
+

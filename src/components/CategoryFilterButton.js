@@ -48,7 +48,6 @@ function CategoryFilterButton(props) {
     }
 
     const filterPic = (props) => {
-        console.log("filterPic ran")
         switch (props) {
             case "health":
                 if (selected) {
@@ -96,8 +95,8 @@ function CategoryFilterButton(props) {
     return (
         <div>
             <img className="FilterCategory__Button" src={filterPic(props.filterCategory)} onClick={() => toggleFilter(props.filterCategory)}/>
-            <button onClick={() => addFilterToStore(props.filterCategory)}>Cat Filter Button for {props.filterCategory}</button>
-            <button onClick={() => removeFilterFromStore(props.filterCategory)}>Remove Filter Button for {props.filterCategory}</button>
+            {/* <button onClick={() => addFilterToStore(props.filterCategory)}>Cat Filter Button for {props.filterCategory}</button>
+            <button onClick={() => removeFilterFromStore(props.filterCategory)}>Remove Filter Button for {props.filterCategory}</button> */}
         </div>
     )
 }

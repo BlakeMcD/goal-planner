@@ -1,3 +1,11 @@
+//THEME
+export const replaceTheme = (payload) => {
+    return {
+        type: "REPLACE_THEME", 
+        item: payload
+    }
+}
+
 //FILTER
 export const addFilter = (payload) => {
     return {
